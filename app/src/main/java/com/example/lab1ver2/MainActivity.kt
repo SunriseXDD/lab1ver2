@@ -18,6 +18,7 @@ import android.widget.EditText
 import android.widget.Toast
 import android.app.Activity
 import android.widget.TextView
+import kotlin.math.sqrt
 
 class MainActivity : Activity() {
 
@@ -48,5 +49,20 @@ class MainActivity : Activity() {
                 Toast.makeText(this, "Ошибка: ${e.message}", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    private fun calculateTriangleParameters(inputType: String, inputValue: Double): Triple<Double, Double, Double> {
+        var k = 0.0  // катет
+        var g = 0.0  // гипотенуза
+        var p = 0.0  // площадь
+
+        when (inputType) {
+            "к" -> {
+                k = inputValue
+                g = k * sqrt(2.0)
+                p = (k * k) / 2
+            }
+        }
+        return Triple(k, g, p)
     }
 }
