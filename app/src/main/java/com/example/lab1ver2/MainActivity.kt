@@ -62,6 +62,11 @@ class MainActivity : Activity() {
                 g = k * sqrt(2.0)
                 p = (k * k) / 2
             }
+            "г" -> {
+                g = inputValue
+                k = g / sqrt(2.0)
+                p = (k * k) / 2
+            }
         }
 
         return Triple(k, g, p)
