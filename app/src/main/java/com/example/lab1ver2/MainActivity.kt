@@ -42,6 +42,7 @@ class MainActivity : Activity() {
                     return@setOnClickListener
                 }
 
+                val (k, g, p) = calculateTriangleParameters(inputType, inputValue)
 
             } catch (e: NumberFormatException) {
                 Toast.makeText(this, "Введите корректное число!", Toast.LENGTH_SHORT).show()
@@ -67,6 +68,12 @@ class MainActivity : Activity() {
                 k = g / sqrt(2.0)
                 p = (k * k) / 2
             }
+            "п" -> {
+                p = inputValue
+                k = sqrt(2 * p)
+                g = k * sqrt(2.0)
+            }
+            else -> throw IllegalArgumentException("Неверный тип параметра")
         }
 
         return Triple(k, g, p)
