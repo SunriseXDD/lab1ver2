@@ -63,6 +63,7 @@ class MainActivity : Activity() {
                 p = (k * k) / 2
             }
         }
+
         return Triple(k, g, p)
     }
 }
