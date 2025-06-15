@@ -17,8 +17,10 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import android.app.Activity
+import android.widget.TextView
 
 class MainActivity : Activity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -26,11 +28,24 @@ class MainActivity : Activity() {
         val editText1 = findViewById<EditText>(R.id.editText1)
         val editText2 = findViewById<EditText>(R.id.editText2)
         val button = findViewById<Button>(R.id.button)
+        val resultTextView = findViewById<TextView>(R.id.resultTextView)
 
         button.setOnClickListener {
-            val text1 = editText1.text.toString()
-            val text2 = editText2.text.toString()
+            try {
+                val inputType = editText1.text.toString().trim().lowercase()
+                val inputValue = editText2.text.toString().trim().toDouble()
+
+                if (inputValue <= 0) {
+                    Toast.makeText(this, "Число должно быть больше нуля!", Toast.LENGTH_SHORT)
+                        .show()
+                    return@setOnClickListener
+                }
+
+            } catch (e: NumberFormatException) {
+                Toast.makeText(this, "Введите корректное число!", Toast.LENGTH_SHORT).show()
+            } catch (e: Exception) {
+                Toast.makeText(this, "Ошибка: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
         }
     }
-
 }
