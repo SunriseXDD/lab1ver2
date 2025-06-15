@@ -41,6 +41,7 @@ class MainActivity : Activity() {
                     return@setOnClickListener
                 }
 
+
             } catch (e: NumberFormatException) {
                 Toast.makeText(this, "Введите корректное число!", Toast.LENGTH_SHORT).show()
             } catch (e: Exception) {
